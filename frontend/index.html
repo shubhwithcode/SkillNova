@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillNova - Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- Left Section -->
+        <div class="left-section">
+
+            <div class="logo">
+    <img src="assets/skillnova-logo.png" alt="SkillNova Logo">
+</div>
+            <div class="left-content">
+
+                <div class="badge">
+                    AI-POWERED LEARNING
+                </div>
+
+                <h1>
+                    Build skills.<br>
+                    <span>Get placement ready.</span>
+                </h1>
+
+                <p>
+                    Learn smarter with personalized roadmaps,
+                    AI resume feedback and mock interview practice.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <div class="feature-icon">✦</div>
+
+                        <div>
+                            <h3>Personalized Roadmaps</h3>
+                            <p>
+                                Learn exactly what your target role needs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+
+                        <div>
+                            <h3>AI Resume Analyzer</h3>
+                            <p>
+                                Get instant feedback and improvement tips.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">◉</div>
+
+                        <div>
+                            <h3>Mock Interviews</h3>
+                            <p>
+                                Practice technical and HR questions with AI.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 SkillNova · Team SkillNova
+            </div>
+
+        </div>
+
+
+        <!-- Right Section -->
+        <div class="right-section">
+
+            <div class="login-card" id="loginSection">
+
+                <h2>Welcome back 👋</h2>
+
+                <p class="subtitle">
+                    Continue your placement preparation.
+                </p>
+
+
+                <!-- Login Form -->
+                <form id="loginForm">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">✉</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <span class="input-icon">🔒</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="showPassword"
+                            class="show-password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+
+                    <div class="login-options">
+
+                        <label class="remember">
+                            <input type="checkbox">
+                            Remember me
+                        </label>
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-btn"
+                    >
+                        Login
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="divider">
+                    <span>or continue with</span>
+                </div>
+
+
+                <button
+                    class="google-btn"
+                    id="googleLogin"
+                >
+                    <b>G</b>
+                    Continue with Google
+                </button>
+
+
+                <p class="register-text">
+                    Don't have an account?
+
+                   <button type="button" id="createAccountBtn">
+    Create account
+</button>
+                </p>
+
+
+            </div>
+<div id="registerSection" class="login-card auth-section">
+
+    <h2>Create your account 🚀</h2>
+
+    <p class="subtitle">
+        Start your personalized placement journey.
+    </p>
+
+    <form id="registerForm">
+
+        <label for="registerName">Full name</label>
+
+        <div class="input-box">
+            <span class="input-icon">👤</span>
+
+            <input
+                type="text"
+                id="registerName"
+                placeholder="Enter your full name"
+                required
+            >
+        </div>
+
+
+        <label for="registerEmail">Email address</label>
+
+        <div class="input-box">
+            <span class="input-icon">✉</span>
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="you@example.com"
+                required
+            >
+        </div>
+
+
+        <label for="registerPassword">Password</label>
+
+        <div class="input-box">
+            <span class="input-icon">🔒</span>
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                minlength="8"
+                required
+            >
+        </div>
+
+        <label for="confirmPassword">Confirm password</label>
+
+        <div class="input-box">
+            <span class="input-icon">🔒</span>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Enter your password again"
+                minlength="8"
+                required
+            >
+        </div>
+
+
+        <button type="submit" class="login-btn">
+            Create account →
+        </button>
+
+    </form>
+
+
+    <p class="register-text">
+        Already have an account?
+
+        <button type="button" id="loginBtn" class="link-btn">
+            Login
+        </button>
+    </p>
+
+</div>
+        </div>
+
+    </div>
+
+
+    <div id="toast"></div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
