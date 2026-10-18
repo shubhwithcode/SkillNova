@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Roadmap | SkillNova</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="topbar">
+			<a class="brand" href="dashboard.html" aria-label="SkillNova home">
+				<img src="assets/skillnova-logo.png" alt="SkillNova">
+			</a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a class="nav-link" href="dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+				<a class="nav-link is-active" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
+				<a class="nav-link" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
+				<a class="nav-link" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
+				<a class="nav-link" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
+			</nav>
+			<button class="logout-button" id="logoutButton" type="button">
+				<span aria-hidden="true">↗</span> Logout
+			</button>
+		</div>
+	</header>
+
+	<main class="dashboard">
+		<section class="welcome-row">
+			<div class="welcome-copy">
+				<p class="eyebrow">YOUR LEARNING PLAN</p>
+				<h1>My Roadmap</h1>
+				<p class="welcome-subtitle">A personalized day-by-day plan for your target role. Mark tasks complete as you learn.</p>
+			</div>
+		</section>
+
+		<div id="pageStatus" class="state-banner loading-banner" role="status">
+			<span class="spinner" aria-hidden="true"></span> Loading your roadmap…
+		</div>
+		<div id="pageError" class="state-banner error-banner" role="alert" hidden>
+			<span id="pageErrorText">Could not load your roadmap.</span>
+			<button type="button" id="retryButton" class="retry-button">Try again</button>
+		</div>
+
+		<!-- Empty state: no roadmap yet -->
+		<section class="panel" id="emptyState" hidden>
+			<h2>Create your personalized roadmap</h2>
+			<p class="panel-note">
+				Choose your target job role and SkillNova will build a 14-day learning plan
+				based on your current skills (from your <a href="profile.html">profile</a>).
+				When the Gemini AI key is configured the plan is AI-generated; otherwise a
+				clearly-labelled built-in plan is used.
+			</p>
+			<form class="sn-form" id="generateForm">
+				<div>
+					<label for="roleSelect">Target job role</label>
+					<select id="roleSelect" required>
+						<option value="">Loading roles…</option>
+					</select>
+					<p class="form-hint">Tip: add your skills in Profile first so the plan targets your real gaps.</p>
+				</div>
+				<button class="button button-primary" id="generateButton" type="submit">Generate my roadmap →</button>
+			</form>
+		</section>
+
+		<!-- Roadmap view -->
+		<div id="roadmapView" hidden>
+			<section class="panel" style="margin-bottom:16px;">
+				<div class="section-heading compact-heading">
+					<div>
+						<p class="eyebrow" id="roadmapRole">—</p>
+						<h2 id="roadmapTitle">—</h2>
+					</div>
+					<span id="roadmapSource"></span>
+				</div>
+				<div style="display:flex; align-items:center; gap:14px; margin-top:10px;">
+					<div class="sn-progress" style="flex:1;"><span id="roadmapProgressBar" style="width:0%"></span></div>
+					<strong id="roadmapProgressText" style="font-size:12px; color:#1f4e8c;">0%</strong>
+				</div>
+				<p class="panel-note" id="roadmapCounts" style="margin-top:8px;"></p>
+				<button type="button" id="regenerateButton" class="button button-ghost" style="margin-top:8px;">Start over with a new roadmap</button>
+			</section>
+
+			<ol class="task-list" id="taskList"></ol>
+		</div>
+
+		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
+	</main>
+	<script src="js/page-shell.js"></script>
+	<script src="js/roadmap.js"></script>
+</body>
+</html>
+

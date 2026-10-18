@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mock Interview | SkillNova</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="topbar">
+			<a class="brand" href="dashboard.html" aria-label="SkillNova home">
+				<img src="assets/skillnova-logo.png" alt="SkillNova">
+			</a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a class="nav-link" href="dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+				<a class="nav-link" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
+				<a class="nav-link" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
+				<a class="nav-link is-active" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
+				<a class="nav-link" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
+			</nav>
+			<button class="logout-button" id="logoutButton" type="button">
+				<span aria-hidden="true">↗</span> Logout
+			</button>
+		</div>
+	</header>
+
+	<main class="dashboard">
+		<section class="welcome-row">
+			<div class="welcome-copy">
+				<p class="eyebrow">PRACTICE MAKES PLACEMENT</p>
+				<h1>Mock Interview</h1>
+				<p class="welcome-subtitle">Text-based practice with instant feedback. One question at a time — answer in your own words.</p>
+			</div>
+		</section>
+
+		<div class="module-grid">
+			<div class="module-stack">
+				<!-- Setup panel -->
+				<section class="panel" id="setupPanel">
+					<h2>Start a new interview</h2>
+					<form class="sn-form" id="setupForm">
+						<div class="form-row">
+							<div>
+								<label for="ivRole">Job role</label>
+								<select id="ivRole"><option value="">Loading roles…</option></select>
+							</div>
+							<div>
+								<label for="ivCategory">Interview type</label>
+								<select id="ivCategory">
+									<option value="technical">Technical</option>
+									<option value="hr">HR</option>
+								</select>
+							</div>
+						</div>
+						<div>
+							<label for="ivDifficulty">Difficulty</label>
+							<select id="ivDifficulty">
+								<option value="beginner">Beginner</option>
+								<option value="intermediate">Intermediate</option>
+								<option value="advanced">Advanced</option>
+							</select>
+						</div>
+						<button class="button button-primary" id="startButton" type="submit">Start interview →</button>
+					</form>
+					<div id="setupError" class="state-banner error-banner" role="alert" hidden></div>
+				</section>
+
+				<!-- Interview panel -->
+				<section class="panel" id="interviewPanel" hidden>
+					<div class="section-heading compact-heading">
+						<div><p class="eyebrow" id="questionCounter">QUESTION 1 OF 3</p><h2>Answer in your own words</h2></div>
+					</div>
+					<p class="qa-question" id="questionText">—</p>
+					<form class="sn-form" id="answerForm" style="max-width:none; margin-top:14px;">
+						<textarea id="answerInput" rows="6" placeholder="Type your answer here… (explain your thinking, add an example)"></textarea>
+						<button class="button button-primary" id="submitAnswerButton" type="submit">Submit answer</button>
+					</form>
+					<div id="answerStatus" class="state-banner loading-banner" role="status" hidden>
+						<span class="spinner" aria-hidden="true"></span> Evaluating your answer…
+					</div>
+					<div id="answerError" class="state-banner error-banner" role="alert" hidden></div>
+
+					<!-- Per-answer feedback -->
+					<div id="feedbackBlock" class="module-stack" style="margin-top:14px;" hidden>
+						<div class="qa-feedback">
+							<h4>Score: <span id="answerScore">—</span>/100 · <span id="answerSource"></span></h4>
+							<p id="answerFeedback"></p>
+							<h4>Suggestions</h4>
+							<ul class="result-list" id="answerSuggestions"></ul>
+							<h4>Example answer structure</h4>
+							<p id="modelAnswer"></p>
+						</div>
+						<button class="button button-primary" id="nextButton" type="button">Next question →</button>
+					</div>
+				</section>
+
+				<!-- Summary panel -->
+				<section class="panel" id="summaryPanel" hidden>
+					<p class="eyebrow">INTERVIEW COMPLETE</p>
+					<h2>Your performance summary</h2>
+					<div class="score-big"><strong id="finalScore">—</strong><span>/ 100</span></div>
+					<p class="panel-note" id="finalSummary" style="font-size:13px;"></p>
+					<p class="panel-note">Final score = average of your per-answer scores.</p>
+					<button class="button button-primary" id="newInterviewButton" type="button">Start another interview</button>
+				</section>
+			</div>
+
+			<!-- History -->
+			<section class="panel">
+				<h2>Previous interviews</h2>
+				<p class="empty-state" id="ivHistoryEmpty" hidden>No interviews yet. Your attempts will appear here.</p>
+				<table class="history-table" id="ivHistoryTable" hidden>
+					<thead><tr><th>Date</th><th>Type</th><th>Level</th><th>Score</th></tr></thead>
+					<tbody id="ivHistoryBody"></tbody>
+				</table>
+				<div id="attemptDetail" class="module-stack" style="margin-top:14px;" hidden></div>
+			</section>
+		</div>
+
+		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
+	</main>
+	<script src="js/page-shell.js"></script>
+	<script src="js/interview.js"></script>
+</body>
+</html>

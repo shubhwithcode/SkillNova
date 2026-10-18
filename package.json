@@ -1,0 +1,28 @@
+{
+  "name": "skillnova",
+  "version": "1.0.0",
+  "description": "SkillNova - Smart Education: AI-Based Skill & Placement Learning Platform (SIH 2026, Problem Statement SIH26134, Team TIMSCDR07)",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "node --test tests/metrics.test.js tests/scoring.test.js"
+  },
+  "keywords": [
+    "skillnova",
+    "education",
+    "ai",
+    "placement",
+    "sih2026"
+  ],
+  "author": "Team TIMSCDR07 - TIMSCDR MCA Batch E",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "multer": "^2.4.0",
+    "mysql2": "^3.24.6"
+  }
+}

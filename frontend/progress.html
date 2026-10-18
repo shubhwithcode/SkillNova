@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Progress | SkillNova</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="topbar">
+			<a class="brand" href="dashboard.html" aria-label="SkillNova home">
+				<img src="assets/skillnova-logo.png" alt="SkillNova">
+			</a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a class="nav-link" href="dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+				<a class="nav-link" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
+				<a class="nav-link" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
+				<a class="nav-link" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
+				<a class="nav-link is-active" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
+			</nav>
+			<button class="logout-button" id="logoutButton" type="button">
+				<span aria-hidden="true">↗</span> Logout
+			</button>
+		</div>
+	</header>
+
+	<main class="dashboard">
+		<section class="welcome-row">
+			<div class="welcome-copy">
+				<p class="eyebrow">THE FULL PICTURE</p>
+				<h1>My Progress</h1>
+				<p class="welcome-subtitle">Everything you've done so far — all from your saved records.</p>
+			</div>
+		</section>
+
+		<div id="pgStatus" class="state-banner loading-banner" role="status">
+			<span class="spinner" aria-hidden="true"></span> Loading your progress…
+		</div>
+		<div id="pgError" class="state-banner error-banner" role="alert" hidden>
+			<span id="pgErrorText">Could not load your progress.</span>
+			<button type="button" id="pgRetry" class="retry-button">Try again</button>
+		</div>
+
+		<div id="pgView" hidden>
+			<div class="module-grid">
+				<div class="module-stack">
+					<!-- Roadmap progress -->
+					<section class="panel">
+						<h2>Roadmap completion</h2>
+						<p class="empty-state" id="pgRoadmapEmpty" hidden>No roadmap yet — <a href="roadmap.html">generate one</a> to start tracking.</p>
+						<div id="pgRoadmapBlock" hidden>
+							<p class="panel-note" id="pgRoadmapTitle" style="font-size:13px; color:#1d2b36;"></p>
+							<div style="display:flex; align-items:center; gap:14px; margin-top:8px;">
+								<div class="sn-progress" style="flex:1;"><span id="pgRoadmapBar" style="width:0%"></span></div>
+								<strong id="pgRoadmapPercent" style="font-size:12px; color:#1f4e8c;">0%</strong>
+							</div>
+							<p class="panel-note" id="pgRoadmapCounts" style="margin-top:6px;"></p>
+						</div>
+						<h3 style="font-size:13px; margin:18px 0 6px;">Recently completed tasks</h3>
+						<p class="empty-state" id="pgTasksEmpty" hidden>No tasks completed yet.</p>
+						<ul class="result-list good" id="pgTasksList"></ul>
+						<h3 style="font-size:13px; margin:18px 0 6px;">Pending concepts (up next)</h3>
+						<p class="empty-state" id="pgPendingEmpty" hidden>Nothing pending — generate or continue a roadmap.</p>
+						<ul class="result-list" id="pgPendingList"></ul>
+					</section>
+
+					<!-- Skills -->
+					<section class="panel">
+						<h2>Skill levels</h2>
+						<p class="empty-state" id="pgSkillsEmpty" hidden>No skills assessed yet — add them in <a href="profile.html">Profile</a>.</p>
+						<div class="skill-list" id="pgSkillList"></div>
+					</section>
+
+					<!-- Histories -->
+					<section class="panel">
+						<h2>Resume analysis history</h2>
+						<p class="empty-state" id="pgResumeEmpty" hidden>No resume analyzed yet.</p>
+						<table class="history-table" id="pgResumeTable" hidden>
+							<thead><tr><th>Date</th><th>File</th><th>Score</th></tr></thead>
+							<tbody id="pgResumeBody"></tbody>
+						</table>
+						<h2 style="margin-top:22px;">Mock interview history</h2>
+						<p class="empty-state" id="pgIvEmpty" hidden>No interviews yet.</p>
+						<table class="history-table" id="pgIvTable" hidden>
+							<thead><tr><th>Date</th><th>Type</th><th>Level</th><th>Score</th></tr></thead>
+							<tbody id="pgIvBody"></tbody>
+						</table>
+					</section>
+				</div>
+
+				<!-- Activity feed -->
+				<section class="panel">
+					<h2>Recent activity</h2>
+					<p class="empty-state" id="pgActivityEmpty" hidden>No activity recorded yet. Complete a task, analyze a resume or take an interview!</p>
+					<ul class="activity-feed" id="pgActivityList"></ul>
+				</section>
+			</div>
+		</div>
+
+		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
+	</main>
+	<script src="js/page-shell.js"></script>
+	<script src="js/progress.js"></script>
+</body>
+</html>

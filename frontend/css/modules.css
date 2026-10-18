@@ -1,0 +1,130 @@
+/* ====================================================================
+   SkillNova - modules.css
+   Shared styles for the module pages (roadmap, resume analyzer,
+   mock interview, profile, progress). Loaded AFTER dashboard.css and
+   reuses its variables (--primary, --ink, --muted, --line, ...).
+==================================================================== */
+
+/* ---- Forms ---- */
+.sn-form { display: grid; gap: 14px; max-width: 640px; }
+.sn-form label { display: block; margin-bottom: 5px; color: var(--ink, #1d2b36); font-size: 12px; font-weight: 700; }
+.sn-form input, .sn-form select, .sn-form textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid #d4dee8;
+    border-radius: 7px; background: #fff; color: #1d2b36;
+    font: inherit; font-size: 13px;
+}
+.sn-form input:focus, .sn-form select:focus, .sn-form textarea:focus {
+    outline: 2px solid #1f4e8c; outline-offset: 1px;
+}
+.sn-form textarea { min-height: 84px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-hint { margin: 2px 0 0; color: #7a8a90; font-size: 11px; }
+
+.button-primary { background: #142f52; color: #fff; border: none; cursor: pointer; }
+.button-primary:hover { background: #0c2240; }
+.button-primary:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+.button-ghost { background: #fff; border: 1px solid #d4dee8; color: #1f4e8c; cursor: pointer; }
+.button-ghost:hover { background: #eef4fa; }
+
+/* ---- Module layout ---- */
+.module-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: 16px; align-items: start; }
+.module-stack { display: grid; gap: 16px; }
+.panel h2 { margin-top: 0; }
+.panel-note { color: #7a8a90; font-size: 11px; line-height: 1.5; }
+
+/* ---- Badges ---- */
+.badge-ai, .badge-fallback, .badge-done, .badge-pending {
+    display: inline-block; padding: 3px 9px; border-radius: 999px;
+    font-size: 9px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase;
+}
+.badge-ai { background: #e4f0e9; color: #2c7a5b; }
+.badge-fallback { background: #fff5e3; color: #9a773c; }
+.badge-done { background: #e4f0e9; color: #2c7a5b; }
+.badge-pending { background: #eef2f6; color: #64747c; }
+
+/* ---- Roadmap task list ---- */
+.task-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.task-item {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 12px;
+    padding: 14px 16px; border: 1px solid #e1e8ef; border-radius: 9px; background: #fff;
+}
+.task-item.is-done { background: #f4faf6; border-color: #cfe5d8; }
+.task-item.is-current { border-color: #1f4e8c; box-shadow: 0 0 0 2px rgba(31,78,140,.12); }
+.task-day {
+    width: 44px; height: 44px; display: grid; place-items: center;
+    border-radius: 9px; background: #e9f0f9; color: #1f4e8c;
+    font-size: 11px; font-weight: 800; text-align: center; line-height: 1.1;
+}
+.task-item.is-done .task-day { background: #dff0e5; color: #2c7a5b; }
+.task-body h3 { margin: 0 0 4px; font-size: 14px; }
+.task-body p { margin: 0 0 6px; color: #66767b; font-size: 12px; line-height: 1.5; }
+.task-meta { display: flex; flex-wrap: wrap; gap: 10px; color: #8a9697; font-size: 10px; }
+.task-resources { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.task-resources a { color: #1f4e8c; font-size: 11px; text-decoration: underline; }
+.task-toggle {
+    align-self: center; min-width: 110px; padding: 8px 10px; border-radius: 7px;
+    border: 1px solid #d4dee8; background: #fff; color: #1f4e8c;
+    font-size: 11px; font-weight: 700; cursor: pointer;
+}
+.task-toggle:hover { background: #eef4fa; }
+.task-toggle.is-done { border-color: #cfe5d8; background: #e9f6ee; color: #2c7a5b; }
+
+/* ---- Progress bar ---- */
+.sn-progress { height: 8px; border-radius: 999px; background: #e7edf3; overflow: hidden; }
+.sn-progress > span { display: block; height: 100%; border-radius: 999px; background: #1f4e8c; transition: width .4s ease; }
+
+/* ---- Score circle (resume / interview results) ---- */
+.score-big { display: flex; align-items: baseline; gap: 6px; }
+.score-big strong { font-size: 44px; color: #142f52; }
+.score-big span { color: #8a9697; font-size: 14px; }
+
+/* ---- Result lists ---- */
+.result-list { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; color: #4d5e66; font-size: 12px; line-height: 1.5; }
+.result-list.good li::marker { color: #2c7a5b; }
+.result-list.bad li::marker { color: #c05b3f; }
+
+/* ---- Interview chat ---- */
+.qa-question {
+    padding: 14px 16px; border-left: 3px solid #1f4e8c; border-radius: 7px;
+    background: #eef4fa; color: #1d2b36; font-size: 14px; line-height: 1.5;
+}
+.qa-feedback { padding: 13px 15px; border: 1px solid #e1e8ef; border-radius: 9px; background: #fff; font-size: 12px; }
+.qa-feedback h4 { margin: 0 0 6px; font-size: 11px; color: #64747c; letter-spacing: .6px; text-transform: uppercase; }
+.qa-feedback p { margin: 0 0 8px; color: #4d5e66; line-height: 1.55; }
+
+/* ---- History tables ---- */
+.history-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.history-table th, .history-table td { padding: 9px 10px; border-bottom: 1px solid #e9eef2; text-align: left; }
+.history-table th { color: #7a8a90; font-size: 10px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
+.history-table tr:hover td { background: #f7fafc; }
+
+/* ---- Skill editor rows (profile) ---- */
+.skill-edit-row { display: grid; grid-template-columns: 1fr 120px auto; gap: 10px; align-items: center; }
+.skill-edit-row output { min-width: 40px; color: #1f4e8c; font-size: 12px; font-weight: 700; text-align: right; }
+.remove-skill { border: none; background: none; color: #c05b3f; font-size: 15px; cursor: pointer; }
+
+/* ---- Activity feed ---- */
+.activity-feed { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.activity-feed li { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: #4d5e66; }
+.activity-feed .act-icon {
+    flex: 0 0 auto; width: 28px; height: 28px; display: grid; place-items: center;
+    border-radius: 8px; background: #e9f0f9; color: #1f4e8c; font-size: 13px;
+}
+.activity-feed time { display: block; color: #9aa6ab; font-size: 10px; }
+
+/* ---- Misc ---- */
+.hidden { display: none !important; }
+.dropzone {
+    display: grid; place-items: center; gap: 6px; padding: 34px 16px;
+    border: 2px dashed #c6d4e2; border-radius: 10px; background: #f8fafc;
+    color: #66767b; text-align: center; cursor: pointer; font-size: 13px;
+}
+.dropzone:hover, .dropzone.is-drag { border-color: #1f4e8c; background: #eef4fa; }
+.dropzone strong { color: #1f4e8c; }
+
+@media (max-width: 860px) {
+    .module-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .task-item { grid-template-columns: auto 1fr; }
+    .task-toggle { grid-column: 1 / -1; }
+}
