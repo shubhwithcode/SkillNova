@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillNova - Create Account</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- Left branding section -->
+        <div class="left-section">
+
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/skillnova-logo.png" alt="SkillNova Logo">
+                </a>
+            </div>
+
+            <div class="left-content">
+
+                <div class="badge">AI-POWERED LEARNING</div>
+
+                <h1>
+                    Start today.<br>
+                    <span>Grow every day.</span>
+                </h1>
+
+                <p>
+                    Create your free account and get a personalized,
+                    AI-driven placement preparation plan.
+                </p>
+
+                <div class="features">
+
+                    <div class="feature">
+                        <div class="feature-icon">✦</div>
+                        <div>
+                            <h3>Personalized Roadmaps</h3>
+                            <p>Learn exactly what your target role needs.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <h3>AI Resume Analyzer</h3>
+                            <p>Get instant feedback and improvement tips.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">◉</div>
+                        <div>
+                            <h3>Mock Interviews</h3>
+                            <p>Practice technical and HR questions with AI.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 SkillNova · Team TIMSCDR07
+            </div>
+
+        </div>
+
+        <!-- Right register card -->
+        <div class="right-section">
+
+            <div class="login-card">
+
+                <h2>Create your account 🚀</h2>
+
+                <p class="subtitle">
+                    Start your personalized placement journey.
+                </p>
+
+                <form id="registerForm" novalidate>
+
+                    <label for="registerName">Full name</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">👤</span>
+                        <input
+                            type="text"
+                            id="registerName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <label for="registerEmail">Email address</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">✉</span>
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <label for="registerPassword">Password</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🔒</span>
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            name="password"
+                            placeholder="Create a password (min 8 characters)"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required
+                        >
+                        <button type="button" id="showRegisterPassword" class="show-password">
+                            Show
+                        </button>
+                    </div>
+
+                    <label for="confirmPassword">Confirm password</label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🔒</span>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Enter your password again"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        Create account →
+                    </button>
+
+                </form>
+
+                <p class="register-text">
+                    Already have an account?
+                    <a href="login.html" class="link-btn">Login</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

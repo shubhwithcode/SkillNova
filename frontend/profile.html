@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile | SkillNova</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="topbar">
+			<a class="brand" href="dashboard.html" aria-label="SkillNova home">
+				<img src="assets/skillnova-logo.png" alt="SkillNova">
+			</a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a class="nav-link" href="dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+				<a class="nav-link" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
+				<a class="nav-link" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
+				<a class="nav-link" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
+				<a class="nav-link" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link is-active" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
+			</nav>
+			<button class="logout-button" id="logoutButton" type="button">
+				<span aria-hidden="true">↗</span> Logout
+			</button>
+		</div>
+	</header>
+
+	<main class="dashboard">
+		<section class="welcome-row">
+			<div class="welcome-copy">
+				<p class="eyebrow">YOUR DETAILS</p>
+				<h1>Profile</h1>
+				<p class="welcome-subtitle">Keep your details and skills up to date — the dashboard and roadmap use them.</p>
+			</div>
+		</section>
+
+		<div id="profileStatus" class="state-banner loading-banner" role="status">
+			<span class="spinner" aria-hidden="true"></span> Loading your profile…
+		</div>
+		<div id="profileError" class="state-banner error-banner" role="alert" hidden></div>
+		<div id="profileSaved" class="state-banner sample-banner" hidden>✓ Saved successfully.</div>
+
+		<div class="module-grid" id="profileView" hidden>
+			<!-- Details form -->
+			<section class="panel">
+				<h2>Personal &amp; academic details</h2>
+				<form class="sn-form" id="profileForm">
+					<div class="form-row">
+						<div>
+							<label for="pfName">Full name</label>
+							<input type="text" id="pfName" maxlength="100" required>
+						</div>
+						<div>
+							<label for="pfEmail">Email (cannot be changed)</label>
+							<input type="email" id="pfEmail" disabled>
+						</div>
+					</div>
+					<div class="form-row">
+						<div>
+							<label for="pfCollege">College / institution</label>
+							<input type="text" id="pfCollege" maxlength="150" placeholder="e.g. TIMSCDR, Mumbai">
+						</div>
+						<div>
+							<label for="pfDegree">Degree / course</label>
+							<input type="text" id="pfDegree" maxlength="100" placeholder="e.g. MCA">
+						</div>
+					</div>
+					<div class="form-row">
+						<div>
+							<label for="pfYear">Graduation year</label>
+							<input type="number" id="pfYear" min="2000" max="2040" placeholder="e.g. 2027">
+						</div>
+						<div>
+							<label for="pfRole">Target job role</label>
+							<select id="pfRole"><option value="">— Not selected —</option></select>
+						</div>
+					</div>
+					<div>
+						<label for="pfSoft">Soft skills</label>
+						<textarea id="pfSoft" maxlength="1000" placeholder="e.g. Communication, teamwork, time management"></textarea>
+					</div>
+					<div>
+						<label for="pfCerts">Certifications / projects / experience</label>
+						<textarea id="pfCerts" maxlength="2000" placeholder="e.g. freeCodeCamp Responsive Web Design; College event website project"></textarea>
+					</div>
+					<button class="button button-primary" id="saveProfileButton" type="submit">Save profile</button>
+				</form>
+			</section>
+
+			<!-- Technical skills editor -->
+			<section class="panel">
+				<h2>Technical skills</h2>
+				<p class="panel-note">Rate yourself honestly (0–100). The roadmap targets skills below 60.</p>
+				<div class="module-stack" id="skillRows" style="margin-top:12px;"></div>
+				<div style="display:flex; gap:8px; margin-top:14px;">
+					<select id="addSkillSelect" style="flex:1; padding:9px 10px; border:1px solid #d4dee8; border-radius:7px; font:inherit; font-size:12px;"></select>
+					<button class="button button-ghost" id="addSkillButton" type="button">+ Add</button>
+				</div>
+				<button class="button button-primary" id="saveSkillsButton" type="button" style="margin-top:14px;">Save skills</button>
+			</section>
+		</div>
+
+		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
+	</main>
+	<script src="js/page-shell.js"></script>
+	<script src="js/profile.js"></script>
+</body>
+</html>

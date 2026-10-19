@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resume Analyzer | SkillNova</title>
+	<link rel="stylesheet" href="css/dashboard.css">
+	<link rel="stylesheet" href="css/modules.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="topbar">
+			<a class="brand" href="dashboard.html" aria-label="SkillNova home">
+				<img src="assets/skillnova-logo.png" alt="SkillNova">
+			</a>
+			<nav class="main-nav" aria-label="Main navigation">
+				<a class="nav-link" href="dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+				<a class="nav-link" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
+				<a class="nav-link is-active" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
+				<a class="nav-link" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
+				<a class="nav-link" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
+			</nav>
+			<button class="logout-button" id="logoutButton" type="button">
+				<span aria-hidden="true">↗</span> Logout
+			</button>
+		</div>
+	</header>
+
+	<main class="dashboard">
+		<section class="welcome-row">
+			<div class="welcome-copy">
+				<p class="eyebrow">AI-POWERED FEEDBACK</p>
+				<h1>Resume Analyzer</h1>
+				<p class="welcome-subtitle">Upload your PDF resume for an indicative score and concrete improvement tips for your target role.</p>
+			</div>
+		</section>
+
+		<div class="module-grid">
+			<div class="module-stack">
+				<!-- Upload panel -->
+				<section class="panel">
+					<h2>Analyze a resume</h2>
+					<form id="uploadForm" class="sn-form">
+						<div>
+							<label for="roleSelect">Compare against job role</label>
+							<select id="roleSelect">
+								<option value="">Use my profile's target role</option>
+							</select>
+						</div>
+						<label class="dropzone" id="dropzone" for="resumeFile">
+							<span aria-hidden="true" style="font-size:26px;">▤</span>
+							<span><strong>Choose a PDF resume</strong> or drag it here</span>
+							<span class="form-hint">PDF only · max 5 MB · text-based (not scanned)</span>
+							<input type="file" id="resumeFile" accept="application/pdf" class="hidden">
+						</label>
+						<p id="fileName" class="form-hint"></p>
+						<button class="button button-primary" id="analyzeButton" type="submit">Analyze my resume →</button>
+					</form>
+					<p class="panel-note" style="margin-top:12px;">
+						ⓘ The score is an <strong>indicative assessment</strong> based on a documented
+						checklist (sections, contact info, links, role-skill match, measurable
+						achievements, length). It does not guarantee ATS compatibility or placement.
+					</p>
+					<div id="analyzeStatus" class="state-banner loading-banner" role="status" hidden>
+						<span class="spinner" aria-hidden="true"></span> Analyzing your resume… (PDF extraction + scoring)
+					</div>
+					<div id="analyzeError" class="state-banner error-banner" role="alert" hidden></div>
+				</section>
+
+				<!-- Results panel -->
+				<section class="panel" id="resultPanel" hidden>
+					<div class="section-heading compact-heading">
+						<div><p class="eyebrow">ANALYSIS RESULT</p><h2 id="resultTitle">Your resume score</h2></div>
+						<span id="resultSource"></span>
+					</div>
+					<div class="score-big"><strong id="resultScore">—</strong><span>/ 100</span></div>
+					<div class="sn-progress" style="margin:10px 0 16px;"><span id="resultBar" style="width:0%"></span></div>
+
+					<h3 style="font-size:13px; margin:14px 0 0;">✓ Strengths</h3>
+					<ul class="result-list good" id="strengthsList"></ul>
+
+					<h3 style="font-size:13px; margin:16px 0 0;">! Weaknesses</h3>
+					<ul class="result-list bad" id="weaknessesList"></ul>
+
+					<h3 style="font-size:13px; margin:16px 0 0;">Missing skills for this role</h3>
+					<ul class="result-list bad" id="missingList"></ul>
+
+					<h3 style="font-size:13px; margin:16px 0 0;">Suggestions</h3>
+					<ul class="result-list" id="suggestionsList"></ul>
+
+					<div id="aiFeedbackBlock" hidden>
+						<h3 style="font-size:13px; margin:16px 0 6px;">AI mentor feedback</h3>
+						<div class="qa-feedback"><p id="aiFeedbackText" style="white-space:pre-line;"></p></div>
+					</div>
+				</section>
+			</div>
+
+			<!-- History panel -->
+			<section class="panel">
+				<h2>Previous analyses</h2>
+				<p class="empty-state" id="historyEmpty" hidden>No resume analyzed yet. Your history will appear here.</p>
+				<table class="history-table" id="historyTable" hidden>
+					<thead><tr><th>Date</th><th>File</th><th>Score</th></tr></thead>
+					<tbody id="historyBody"></tbody>
+				</table>
+			</section>
+		</div>
+
+		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
+	</main>
+	<script src="js/page-shell.js"></script>
+	<script src="js/resume.js"></script>
+</body>
+</html>

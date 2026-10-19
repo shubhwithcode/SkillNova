@@ -18,7 +18,7 @@
 				<a class="nav-link" href="roadmap.html"><span aria-hidden="true">⌖</span> My Roadmap</a>
 				<a class="nav-link" href="resume.html"><span aria-hidden="true">▤</span> Resume Analyzer</a>
 				<a class="nav-link" href="interview.html"><span aria-hidden="true">◉</span> Mock Interview</a>
-				<a class="nav-link" href="#progress"><span aria-hidden="true">▥</span> My Progress</a>
+				<a class="nav-link" href="progress.html"><span aria-hidden="true">▥</span> My Progress</a>
 				<a class="nav-link" href="profile.html"><span aria-hidden="true">○</span> Profile</a>
 			</nav>
 			<button class="logout-button" id="logoutButton" type="button">
@@ -28,6 +28,22 @@
 	</header>
 
 	<main class="dashboard">
+
+		<!-- Loading / error / sample-data states -->
+		<div id="dashboardLoading" class="state-banner loading-banner" role="status">
+			<span class="spinner" aria-hidden="true"></span> Loading your dashboard…
+		</div>
+		<div id="dashboardError" class="state-banner error-banner" role="alert" hidden>
+			Could not load your dashboard data. Make sure you opened SkillNova at
+			<strong>&nbsp;http://localhost:3000&nbsp;</strong> (the Node.js server), then retry.
+			<button type="button" id="retryButton" class="retry-button">Try again</button>
+		</div>
+		<div id="sampleNotice" class="state-banner sample-banner" hidden>
+			ⓘ Showing <strong>sample data</strong> — MySQL is not configured yet. Set <strong>DB_PASSWORD</strong> in .env and run the database scripts (see README) to see your real progress.
+		</div>
+
+		<div id="dashboardContent" hidden>
+
 		<section class="welcome-row" aria-labelledby="welcomeTitle">
 			<div class="welcome-copy">
 				<p class="eyebrow">YOUR NEXT STEP STARTS HERE</p>
@@ -35,69 +51,81 @@
 				<p class="welcome-subtitle">Ready to continue your journey towards becoming <strong>job ready?</strong></p>
 			</div>
 			<div class="welcome-facts" aria-label="Your current learning details">
-				<div class="fact-item"><span class="fact-icon role-icon" aria-hidden="true">⌘</span><span><small>Target role</small><strong>Full Stack Developer</strong></span></div>
-				<div class="fact-item"><span class="fact-icon streak-icon" aria-hidden="true">↗</span><span><small>Current streak</small><strong>12 days</strong></span></div>
-				<div class="fact-item"><span class="fact-icon ready-icon" aria-hidden="true">◌</span><span><small>Readiness</small><strong>72%</strong></span></div>
+				<div class="fact-item"><span class="fact-icon role-icon" aria-hidden="true">⌘</span><span><small>Target role</small><strong id="factTargetRole">—</strong></span></div>
+				<div class="fact-item"><span class="fact-icon streak-icon" aria-hidden="true">↗</span><span><small>Current streak</small><strong id="factStreak">—</strong></span></div>
+				<div class="fact-item"><span class="fact-icon ready-icon" aria-hidden="true">◌</span><span><small>Readiness</small><strong id="factReadiness">—</strong></span></div>
 			</div>
 		</section>
 
 		<section class="learning-layout" aria-label="Continue learning">
 			<article class="learning-card">
 				<div class="learning-content">
-					<div class="section-kicker"><span class="live-dot"></span> YOUR LEARNING PATH <span class="day-count">DAY 3 OF 30</span></div>
+					<div class="section-kicker"><span class="live-dot"></span> YOUR LEARNING PATH <span class="day-count" id="dayCount">DAY — OF —</span></div>
 					<h2>Today's learning</h2>
-					<h3>React Components</h3>
-					<p>Learn component structure, props and state. Build reusable pieces for your next project.</p>
-					<div class="lesson-meta"><span>◷ &nbsp;25 min</span><span>▧ &nbsp;3 short lessons</span></div>
-					<a class="button button-light" href="roadmap.html">Continue learning <span aria-hidden="true">→</span></a>
+					<h3 id="lessonTopic">—</h3>
+					<p id="lessonDescription"></p>
+					<div class="lesson-meta"><span>◷ &nbsp;<span id="lessonMinutes">—</span> min</span><span>▧ &nbsp;<span id="lessonCount">—</span> short lessons</span></div>
+					<a class="button button-light" id="continueLearningLink" href="roadmap.html">Continue learning <span aria-hidden="true">→</span></a>
 				</div>
 				<div class="learning-art" aria-hidden="true">
 					<div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
 					<div class="code-tile"><span>&lt;</span><b>/</b><span>&gt;</span></div>
 					<span class="art-spark spark-one">✳</span><span class="art-spark spark-two">+</span>
-					<div class="art-label">REACT<br><strong>01 / 03</strong></div>
+					<div class="art-label" id="artLabel">REACT<br><strong>01 / 03</strong></div>
 				</div>
 			</article>
 			<aside class="weekly-card">
-				<div class="weekly-top"><span class="weekly-icon">✦</span><span class="weekly-label">THIS WEEK</span><span class="weekly-change">+8%</span></div>
+				<div class="weekly-top"><span class="weekly-icon">✦</span><span class="weekly-label">THIS WEEK</span><span class="weekly-change" id="weeklyChange">—</span></div>
 				<h2>You're building<br>real momentum.</h2>
-				<p>Keep your streak alive with today's 25-minute lesson.</p>
-				<div class="weekly-progress"><span></span></div>
-				<div class="weekly-foot"><span>Weekly goal</span><strong>3 of 5 days</strong></div>
+				<p id="weeklyMessage">Keep your streak alive with today's lesson.</p>
+				<div class="weekly-progress"><span id="weeklyProgressBar" style="width:0%"></span></div>
+				<div class="weekly-foot"><span>Weekly goal</span><strong id="weeklyGoal">— of — days</strong></div>
 			</aside>
 		</section>
 
 		<section class="progress-section" id="progress" aria-labelledby="progressTitle">
 			<div class="section-heading"><div><p class="eyebrow">THE BIG PICTURE</p><h2 id="progressTitle">Your progress</h2></div><a class="text-link" href="roadmap.html">See roadmap <span aria-hidden="true">→</span></a></div>
 			<div class="metric-grid">
-				<article class="metric-card readiness-metric"><div class="metric-head"><span class="metric-icon">◎</span><span class="metric-caption">JOB READINESS</span><span class="metric-trend">↗ 8%</span></div><strong class="metric-value">72<span>%</span></strong><div class="metric-track"><span style="width:72%"></span></div><p>You're closer than last week</p></article>
-				<article class="metric-card"><div class="metric-head"><span class="metric-icon blue-icon">▤</span><span class="metric-caption">SKILLS COMPLETED</span></div><strong class="metric-value">12<span class="metric-total"> / 18</span></strong><div class="metric-track blue-track"><span style="width:67%"></span></div><p>6 skills left on your path</p></article>
-				<article class="metric-card"><div class="metric-head"><span class="metric-icon orange-icon">↗</span><span class="metric-caption">DAY STREAK</span></div><strong class="metric-value">12<span class="metric-total"> days</span></strong><p class="metric-note">Your best streak is 16 days</p></article>
-				<article class="metric-card"><div class="metric-head"><span class="metric-icon coral-icon">!</span><span class="metric-caption">PENDING CONCEPTS</span></div><strong class="metric-value">5</strong><p class="metric-note">A few focused sessions will help</p></article>
+				<article class="metric-card readiness-metric">
+					<div class="metric-head"><span class="metric-icon">◎</span><span class="metric-caption">JOB READINESS</span><span class="metric-trend" id="readinessTrend"></span></div>
+					<strong class="metric-value"><span id="readinessValue">—</span><span>%</span></strong>
+					<div class="metric-track"><span id="readinessBar" style="width:0%"></span></div>
+					<p>You're closer than last week</p>
+				</article>
+				<article class="metric-card">
+					<div class="metric-head"><span class="metric-icon blue-icon">▤</span><span class="metric-caption">SKILLS COMPLETED</span></div>
+					<strong class="metric-value"><span id="skillsCompleted">—</span><span class="metric-total"> / <span id="skillsTotal">—</span></span></strong>
+					<div class="metric-track blue-track"><span id="skillsBar" style="width:0%"></span></div>
+					<p id="skillsLeftNote"></p>
+				</article>
+				<article class="metric-card">
+					<div class="metric-head"><span class="metric-icon orange-icon">↗</span><span class="metric-caption">DAY STREAK</span></div>
+					<strong class="metric-value"><span id="streakValue">—</span><span class="metric-total"> days</span></strong>
+					<p class="metric-note" id="bestStreakNote"></p>
+				</article>
+				<article class="metric-card">
+					<div class="metric-head"><span class="metric-icon coral-icon">!</span><span class="metric-caption">PENDING CONCEPTS</span></div>
+					<strong class="metric-value" id="pendingConcepts">—</strong>
+					<p class="metric-note">A few focused sessions will help</p>
+				</article>
 			</div>
 		</section>
 
 		<section class="skills-layout" aria-label="Skill levels and recommendations">
 			<article class="panel skills-panel">
 				<div class="section-heading compact-heading"><div><p class="eyebrow">YOUR TOOLKIT</p><h2>Your skill level</h2></div><span class="updated-label">Updated today</span></div>
-				<div class="skill-list">
-					<div class="skill-row"><div class="skill-label"><span>HTML / CSS</span><strong>90%</strong></div><div class="skill-track"><span style="width:90%"></span></div></div>
-					<div class="skill-row"><div class="skill-label"><span>JavaScript</span><strong>75%</strong></div><div class="skill-track"><span style="width:75%"></span></div></div>
-					<div class="skill-row"><div class="skill-label"><span>React</span><strong>45%</strong></div><div class="skill-track"><span style="width:45%"></span></div></div>
-					<div class="skill-row"><div class="skill-label"><span>Node.js</span><strong>30%</strong></div><div class="skill-track"><span style="width:30%"></span></div></div>
-					<div class="skill-row"><div class="skill-label"><span>SQL</span><strong>60%</strong></div><div class="skill-track"><span style="width:60%"></span></div></div>
+				<div class="skill-list" id="skillList">
+					<!-- Skill rows are rendered by dashboard.js -->
 				</div>
+				<p class="empty-state" id="skillsEmpty" hidden>No skills assessed yet. Set up your profile to get started.</p>
 			</article>
 			<article class="panel gaps-panel">
 				<div class="section-heading compact-heading"><div><p class="eyebrow">AI-POWERED INSIGHTS</p><h2>Skills to improve</h2></div><span class="insight-mark" aria-hidden="true">✳</span></div>
 				<p class="panel-intro">Your current skill gaps, ordered by what matters most for your target role.</p>
-				<ul class="gap-list">
-					<li><span>React Hooks</span><span class="gap-priority high">High priority</span></li>
-					<li><span>REST APIs</span><span class="gap-priority high">High priority</span></li>
-					<li><span>SQL Joins</span><span class="gap-priority medium">In progress</span></li>
-					<li><span>Authentication</span><span class="gap-priority medium">Up next</span></li>
-					<li><span>Backend Development</span><span class="gap-priority low">Coming up</span></li>
+				<ul class="gap-list" id="gapList">
+					<!-- Gap rows are rendered by dashboard.js -->
 				</ul>
+				<p class="empty-state" id="gapsEmpty" hidden>No skill gaps identified yet — generate a roadmap to see them.</p>
 				<a class="text-link" href="roadmap.html">View personalized roadmap <span aria-hidden="true">→</span></a>
 			</article>
 		</section>
@@ -105,16 +133,36 @@
 		<section class="practice-section" aria-labelledby="practiceTitle">
 			<div class="section-heading"><div><p class="eyebrow">YOUR NEXT OPPORTUNITY</p><h2 id="practiceTitle">Practice &amp; improve</h2></div></div>
 			<div class="practice-grid">
-				<article class="practice-card resume-card"><div class="practice-top"><span class="practice-icon">▤</span><span class="practice-tag">RESUME</span></div><h3>Make your first impression count.</h3><p>Your resume score</p><div class="score-line"><strong>82<span>/100</span></strong><span class="score-status">Looking good</span></div><a class="button button-outline" href="resume.html">Improve resume <span aria-hidden="true">→</span></a></article>
-				<article class="practice-card interview-card"><div class="practice-top"><span class="practice-icon">◉</span><span class="practice-tag">MOCK INTERVIEW</span></div><h3>Get comfortable being the expert.</h3><p>Your last interview score</p><div class="score-line"><strong>76<span>/100</span></strong><span class="score-status">+6 this month</span></div><a class="button button-outline" href="interview.html">Start interview <span aria-hidden="true">→</span></a></article>
-				<article class="practice-card recommendation-card"><div class="practice-top"><span class="practice-icon">✳</span><span class="practice-tag">AI RECOMMENDATION</span></div><h3>A focused week adds up.</h3><blockquote>“Focus on REST APIs and Node.js this week.”</blockquote><a class="text-link" href="roadmap.html">See your weekly plan <span aria-hidden="true">→</span></a></article>
+				<article class="practice-card resume-card">
+					<div class="practice-top"><span class="practice-icon">▤</span><span class="practice-tag">RESUME</span></div>
+					<h3>Make your first impression count.</h3>
+					<p>Your resume score</p>
+					<div class="score-line"><strong><span id="resumeScore">—</span><span>/100</span></strong><span class="score-status" id="resumeStatus"></span></div>
+					<a class="button button-outline" href="resume.html">Improve resume <span aria-hidden="true">→</span></a>
+				</article>
+				<article class="practice-card interview-card">
+					<div class="practice-top"><span class="practice-icon">◉</span><span class="practice-tag">MOCK INTERVIEW</span></div>
+					<h3>Get comfortable being the expert.</h3>
+					<p>Your last interview score</p>
+					<div class="score-line"><strong><span id="interviewScore">—</span><span>/100</span></strong><span class="score-status" id="interviewStatus"></span></div>
+					<a class="button button-outline" href="interview.html">Start interview <span aria-hidden="true">→</span></a>
+				</article>
+				<article class="practice-card recommendation-card">
+					<div class="practice-top"><span class="practice-icon">✳</span><span class="practice-tag">AI RECOMMENDATION</span></div>
+					<h3>A focused week adds up.</h3>
+					<blockquote id="recommendationText">“—”</blockquote>
+					<a class="text-link" href="roadmap.html">See your weekly plan <span aria-hidden="true">→</span></a>
+				</article>
 			</div>
 		</section>
 
 		<section class="bottom-cta" aria-label="Continue your roadmap">
-			<div><span class="cta-spark" aria-hidden="true">✳</span><div><p class="eyebrow">ONE STEP AT A TIME</p><h2>Keep going! You're <strong>72% job-ready.</strong></h2></div></div>
+			<div><span class="cta-spark" aria-hidden="true">✳</span><div><p class="eyebrow">ONE STEP AT A TIME</p><h2>Keep going! You're <strong><span id="ctaReadiness">—</span>% job-ready.</strong></h2></div></div>
 			<a class="button button-dark" href="roadmap.html">Continue my roadmap <span aria-hidden="true">→</span></a>
 		</section>
+
+		</div><!-- /dashboardContent -->
+
 		<footer class="page-footer"><span>SkillNova · Your career, in progress.</span><span>Built around your goals</span></footer>
 	</main>
 	<script src="js/dashboard.js"></script>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillNova features - AI skill roadmap, resume analyzer, mock interview bot and readiness dashboard.">
+    <title>Features | SkillNova</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a class="brand" href="index.html" aria-label="SkillNova home">
+                <img src="assets/skillnova-logo.png" alt="SkillNova">
+            </a>
+
+            <button class="nav-toggle" id="navToggle" type="button"
+                    aria-label="Open menu" aria-expanded="false">☰</button>
+
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="features.html" class="is-active">Features</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a class="btn btn-outline" href="login.html">Login</a>
+                <a class="btn btn-primary" href="register.html">Get started</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head center">
+                    <span class="eyebrow">FEATURES</span>
+                    <h2>Everything you need to get placement ready</h2>
+                    <p>Four connected modules that turn your effort into measurable progress.</p>
+                </div>
+
+                <!-- Roadmap -->
+                <div class="detail-row" id="roadmap">
+                    <div class="detail-copy">
+                        <span class="eyebrow">MODULE 1</span>
+                        <h3>AI Skill Roadmap</h3>
+                        <p>
+                            Choose your target job role and tell SkillNova what you already know.
+                            AI builds a week-by-week learning plan made just for you.
+                        </p>
+                        <ul>
+                            <li>Personalized to your role, skills and experience</li>
+                            <li>Daily tasks with objectives, resources and durations</li>
+                            <li>Mark tasks complete and track overall progress</li>
+                            <li>Your roadmap is saved and waiting when you return</li>
+                        </ul>
+                    </div>
+                    <div class="detail-art art-blue" aria-hidden="true">✦</div>
+                </div>
+
+                <!-- Resume -->
+                <div class="detail-row reverse" id="resume">
+                    <div class="detail-art art-orange" aria-hidden="true">▤</div>
+                    <div class="detail-copy">
+                        <span class="eyebrow">MODULE 2</span>
+                        <h3>Resume Analyzer</h3>
+                        <p>
+                            Upload your PDF resume and get a clear, documented score with
+                            specific improvements — compared against your target role.
+                        </p>
+                        <ul>
+                            <li>Python-powered PDF text extraction</li>
+                            <li>Strengths, weaknesses and missing skills</li>
+                            <li>Suggestions for projects and achievements</li>
+                            <li>History of all your past analyses</li>
+                        </ul>
+                        <p>
+                            Note: the score is an indicative assessment — it does not
+                            guarantee ATS compatibility or placement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interview -->
+                <div class="detail-row" id="interview">
+                    <div class="detail-copy">
+                        <span class="eyebrow">MODULE 3</span>
+                        <h3>Mock Interview Bot</h3>
+                        <p>
+                            Practice technical and HR interviews, one question at a time,
+                            and get AI feedback on relevance, completeness and clarity.
+                        </p>
+                        <ul>
+                            <li>Role-based technical and HR categories</li>
+                            <li>Questions organized by difficulty</li>
+                            <li>Example answers and improvement tips</li>
+                            <li>Performance summary and attempt history</li>
+                        </ul>
+                    </div>
+                    <div class="detail-art art-green" aria-hidden="true">◉</div>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="detail-row reverse" id="dashboard">
+                    <div class="detail-art art-navy" aria-hidden="true">▥</div>
+                    <div class="detail-copy">
+                        <span class="eyebrow">MODULE 4</span>
+                        <h3>Readiness Dashboard</h3>
+                        <p>
+                            One place that shows how prepared you are — with an explainable
+                            readiness score calculated from your real activity.
+                        </p>
+                        <ul>
+                            <li>Readiness score with a documented calculation</li>
+                            <li>Roadmap completion and skill gaps</li>
+                            <li>Latest resume score and interview performance</li>
+                            <li>Recommended next actions, visualized with charts</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Start your preparation today</h2>
+                        <p>Create your free SkillNova account in under a minute.</p>
+                    </div>
+                    <a class="btn btn-light" href="register.html">Create free account →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>© 2026 SkillNova · Team TIMSCDR07 · TIMSCDR, MCA Batch E</span>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="about.html">About</a>
+                <a href="features.html">Features</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
